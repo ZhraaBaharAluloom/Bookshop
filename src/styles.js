@@ -1,18 +1,33 @@
-const styles = {
-    text: { textAlign: "center" },
-    shopImage: {
-      display: "block",
-      marginLeft: "auto",
-      marginRight: "auto",
-      width: "50%",
-    },
-    list: {
-      alignItems: "center",
-      justifyContent: "center",
-      display: "flex",
-    },
-    book: { margin: "20px" },
-    bookImage: { width: "400px", height: "400px" },
-  
-  };
-export default styles;  
+import styled, { createGlobalStyle } from "styled-components";
+
+const Title = styled.h1`
+  text-align: center;
+`;
+const Description = styled.h3`
+  text-align: center;
+`;
+const ListWrapper = styled.div`
+  align-items: center;
+  justify-content: center;
+  display: flex;
+`;
+const BookWrapper = styled.div`
+  margin: 20px;
+  img {
+    width: 400px;
+    height: 400px;
+  }
+  p {
+    text-align: center;
+    &.colors {
+      color: ${(props) => props.theme.lightBrown};
+    }
+  }
+`;
+const GlobalStyle = createGlobalStyle`
+body{
+background-color: ${(props) => props.theme.backgroundColor};
+color: ${(props) => props.theme.mainColor};
+}
+`;
+export { Title, ListWrapper, Description, BookWrapper, GlobalStyle };

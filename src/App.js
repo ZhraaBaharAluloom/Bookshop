@@ -1,17 +1,22 @@
 import React from "react";
-import styles from "./styles";
 import BooksList from "./Components/BooksList";
+import styled, { ThemeProvider } from "styled-components";
+import { Title, List, Description, Book, GlobalStyle } from "./styles";
+
+const theme = {
+  mainColor: "#363636",
+  backgroundColor: "#faeee7",
+  lightBrown: " #cf7500",
+};
 
 function App() {
-  
   return (
-<div>
-    <div>
-    <h1 style={styles.text}>Welcome to the books world</h1>
-  <h3 style={styles.text}>Here you will get some amazing books</h3>
-  </div>
-<BooksList />
-  </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Title>Welcome to the books world</Title>
+      <Description>Here you will get some amazing books</Description>
+      <BooksList />
+    </ThemeProvider>
   );
 }
 
