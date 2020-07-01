@@ -38,6 +38,9 @@ background-color: ${(props) => props.theme.backgroundColor};
 color: ${(props) => props.theme.mainColor};
 }
 `;
+const DeleteButtonStyled = styled.p`
+  color: #ff3232;
+`;
 export {
   Title,
   ListWrapper,
@@ -45,4 +48,5 @@ export {
   BookWrapper,
   GlobalStyle,
   ThemeButton,
+  DeleteButtonStyled,
 };

@@ -8,11 +8,13 @@ const theme = {
     mainColor: "#363636",
     backgroundColor: "#faeee7",
     lightBrown: " #cf7500",
+    red: "#ff3232",
   },
   dark: {
     mainColor: "#faeee7",
     backgroundColor: "#363636",
     lightBrown: " #cf7500",
+    red: "#ff3232",
   },
 };
 
@@ -25,7 +27,9 @@ function App() {
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
-      <ThemeButton onClick={toggleTheme}>Dark Mode</ThemeButton>
+      <ThemeButton onClick={toggleTheme}>
+        {currentTheme === "light" ? "Dark Mode" : "Light Mode"}
+      </ThemeButton>
       <Title>Welcome to the books world</Title>
       <Description>Here you will get some amazing books</Description>
       <BooksList />
