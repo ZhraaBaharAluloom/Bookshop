@@ -41,6 +41,29 @@ color: ${(props) => props.theme.mainColor};
 const DeleteButtonStyled = styled.p`
   color: #ff3232;
 `;
+
+const DetailWrapper = styled.div`
+  border: 1px solid;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+
+  img {
+    width: 200px;
+    height: 330px;
+    float: left;
+    padding: 10px;
+    display: inline-block;
+  }
+
+  p {
+    vertical-align: middle;
+    text-align: justify;
+    margin: 10px;
+  }
+`;
+
 export {
   Title,
   ListWrapper,
@@ -48,5 +71,6 @@ export {
   BookWrapper,
   GlobalStyle,
   ThemeButton,
+  DetailWrapper,
   DeleteButtonStyled,
 };

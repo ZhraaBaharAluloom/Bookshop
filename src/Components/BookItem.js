@@ -8,7 +8,11 @@ const BookItem = (props) => {
   };
   return (
     <BookWrapper>
-      <img alt={props.book.name} src={props.book.image} />
+      <img
+        onClick={() => props.selectBook(props.book.id)}
+        alt={props.book.name}
+        src={props.book.image}
+      />
       <p>{props.book.name}</p>
       <p className="colors">{props.book.price} $</p>
       <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>
