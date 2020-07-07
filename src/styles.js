@@ -64,6 +64,12 @@ const DetailWrapper = styled.div`
   }
 `;
 
+const SearchBarStyled = styled.input`
+  padding: 0.5rem;
+  margin: 1rem auto;
+  display: block;
+  width: 40%;
+`;
 export {
   Title,
   ListWrapper,
@@ -73,4 +79,5 @@ export {
   ThemeButton,
   DetailWrapper,
   DeleteButtonStyled,
+  SearchBarStyled,
 };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import BooksList from "./Components/BooksList";
 import { ThemeProvider } from "styled-components";
 import { Title, Description, ThemeButton, GlobalStyle } from "./styles";
-import BookDetails from "./Components/BookDetails";
+import BookDetail from "./Components/BookDetail";
 import books from "./books";
 
 const theme = {
@@ -24,30 +24,29 @@ const theme = {
 
 function App() {
   const [book, setBook] = useState(null);
-  const [_books, setBooks] = useState(books);
-
-  const deleteBook = (bookId) => {
-    const updatedBooks = _books.filter((book) => book.id !== bookId);
-    setBooks(updatedBooks);
-    setBook(null);
-  };
-
   const selectBook = (bookId) => {
-    const SelectedBook = _books.find((book) => book.id === bookId);
-    setBook(SelectedBook);
+    const selectedBook = books.find((book) => book.id === +bookId);
+    setBook(selectedBook);
   };
   const setView = () =>
     book ? (
-      <BookDetails book={book} deleteBook={deleteBook} />
+      <BookDetail book={book} deleteBook={deleteBook} />
     ) : (
       <BooksList
-        selectBook={selectBook}
-        books={_books}
+        _books={_books}
         deleteBook={deleteBook}
+        selectBook={selectBook}
       />
     );
 
   let [currentTheme, setCurrentTheme] = useState("light");
+  const [_books, setBooks] = useState(books);
+  const deleteBook = (bookId) => {
+    const updatedBooks = _books.filter((book) => book.id !== +bookId);
+    setBooks(updatedBooks);
+    setBook(null);
+  };
+
   const toggleTheme = () => {
     setCurrentTheme(currentTheme === "light" ? "dark" : "light");
   };

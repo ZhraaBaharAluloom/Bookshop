@@ -1,21 +1,19 @@
 import React from "react";
-import { BookWrapper, DeleteButtonStyled } from "../styles";
-import book from "../books";
+import { BookWrapper } from "../styles";
+import DeleteButton from "./Buttons/DeleteButton";
 
 const BookItem = (props) => {
-  const handleDelete = () => {
-    props.deleteBook(props.book.id);
-  };
+  const book = props.book;
   return (
     <BookWrapper>
       <img
-        onClick={() => props.selectBook(props.book.id)}
-        alt={props.book.name}
-        src={props.book.image}
+        onClick={() => props.selectBook(book.id)}
+        alt={book.name}
+        src={book.image}
       />
-      <p>{props.book.name}</p>
-      <p className="colors">{props.book.price} $</p>
-      <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled>
+      <p>{book.name}</p>
+      <p className="colors">{book.price} $</p>
+      <DeleteButton bookId={book.id} deleteBook={props.deleteBook} />
     </BookWrapper>
   );
 };
