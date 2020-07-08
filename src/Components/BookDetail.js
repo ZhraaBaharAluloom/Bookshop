@@ -1,15 +1,22 @@
 import React from "react";
 import DeleteButton from "../Components/Buttons/DeleteButton";
-const BookDetail = (props) => {
-  const book = props.book;
+import { DetailWrapper } from "../styles";
+import { useParams } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+
+const BookDetail = ({ books, deleteBook }) => {
+  const { bookId } = useParams();
+  const book = books.find((book) => book.id === +bookId);
+  if (!book) return <Redirect to="/books" />;
   return (
-    <div>
+    <DetailWrapper>
       <h1>{book.name}</h1>
       <img src={book.image} alt={book.name} />
-      <p>{book.price} $</p>
+      <p className="textalign">{book.price} $</p>
       <p>{book.description}</p>
-      <DeleteButton bookId={book.id} deleteBook={props.deleteBook} />
-    </div>
+      <DeleteButton bookId={book.id} deleteBook={deleteBook} />
+    </DetailWrapper>
   );
 };
+
 export default BookDetail;

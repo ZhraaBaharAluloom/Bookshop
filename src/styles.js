@@ -1,83 +1,105 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { NavLink } from "react-router-dom";
 
-const ThemeButton = styled.button`
+export const ThemeButton = styled.button`
   font-size: 1em;
-  margin: 1.25em;
   padding: 0.25em 1em;
   border-radius: 3px;
   background-color: ${(props) => props.theme.mainColor};
   color: ${(props) => props.theme.backgroundColor};
 `;
-const Title = styled.h1`
+
+export const Title = styled.h1`
   text-align: center;
 `;
-const Description = styled.h3`
+
+export const HomeImage = styled.img`
+  width: 500px;
+  height: 330px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid ${(props) => props.theme.mainColor};
+  border-radius: 3px;
+`;
+
+export const Description = styled.h3`
   text-align: center;
 `;
-const ListWrapper = styled.div`
+
+export const ListWrapper = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
 `;
-const BookWrapper = styled.div`
-  margin: 20px;
+
+export const BookWrapper = styled.div`
+  padding: 20px;
   img {
-    width: 400px;
+    width: 300px;
     height: 400px;
+    border: 2px solid ${(props) => props.theme.mainColor};
+    margin: auto;
   }
   p {
     text-align: center;
+    font-size: 25px;
     &.colors {
-      color: ${(props) => props.theme.lightBrown};
+      color: ${(props) => props.theme.lightGrey};
     }
   }
 `;
-const GlobalStyle = createGlobalStyle`
+
+export const GlobalStyle = createGlobalStyle`
 body{
 background-color: ${(props) => props.theme.backgroundColor};
 color: ${(props) => props.theme.mainColor};
 }
 `;
-const DeleteButtonStyled = styled.p`
+
+export const DeleteButtonStyled = styled.p`
   color: #ff3232;
 `;
 
-const DetailWrapper = styled.div`
+export const DetailWrapper = styled.div`
   border: 1px solid;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
-
+  width: 400px;
+  h1 {
+    text-align: center;
+  }
   img {
-    width: 200px;
+    width: 300px;
     height: 330px;
-    float: left;
-    padding: 10px;
-    display: inline-block;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   p {
     vertical-align: middle;
     text-align: justify;
     margin: 10px;
+    &.textalign {
+      text-align: center;
+    }
   }
 `;
 
-const SearchBarStyled = styled.input`
+export const NavItem = styled(NavLink)`
+  color: ${(props) => props.theme.mainColor};
+  font-size: 20px;
+
+  &.active {
+    color: ${(props) => props.theme.lightGrey};
+  }
+`;
+
+export const SearchBarStyled = styled.input`
   padding: 0.5rem;
   margin: 1rem auto;
   display: block;
   width: 40%;
 `;
-export {
-  Title,
-  ListWrapper,
-  Description,
-  BookWrapper,
-  GlobalStyle,
-  ThemeButton,
-  DetailWrapper,
-  DeleteButtonStyled,
-  SearchBarStyled,
-};

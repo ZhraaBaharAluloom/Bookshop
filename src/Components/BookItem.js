@@ -1,19 +1,17 @@
 import React from "react";
 import { BookWrapper } from "../styles";
 import DeleteButton from "./Buttons/DeleteButton";
+import { Link } from "react-router-dom";
 
-const BookItem = (props) => {
-  const book = props.book;
+const BookItem = ({ book, deleteBook }) => {
   return (
     <BookWrapper>
-      <img
-        onClick={() => props.selectBook(book.id)}
-        alt={book.name}
-        src={book.image}
-      />
+      <Link to={`/books/${book.id}`}>
+        <img alt={book.name} src={book.image} />
+      </Link>
       <p>{book.name}</p>
       <p className="colors">{book.price} $</p>
-      <DeleteButton bookId={book.id} deleteBook={props.deleteBook} />
+      <DeleteButton bookId={book.id} deleteBook={deleteBook} />
     </BookWrapper>
   );
 };

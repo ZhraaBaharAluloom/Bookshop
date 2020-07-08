@@ -4,25 +4,18 @@ import BookItem from "./BookItem";
 import books from "../books";
 import SearchBar from "./SearchBar";
 
-const BooksList = (props) => {
+const BooksList = ({ books, deleteBook }) => {
   const [query, setQuery] = useState("");
-  const filteredBooks = props._books.filter((book) =>
-    book.name.toLowerCase().includes(query.toLowerCase())
-  );
-
-  const booksList = filteredBooks.map((book) => (
-    <BookItem
-      book={book}
-      deleteBook={props.deleteBook}
-      selectBook={props.selectBook}
-      key={book.id}
-    />
-  ));
+  const booksList = books
+    .filter((book) => book.name.toLowerCase().includes(query.toLowerCase()))
+    .map((book) => (
+      <BookItem book={book} deleteBook={deleteBook} key={book.id} />
+    ));
 
   return (
-    <div>
+    <div className="container">
       <SearchBar setQuery={setQuery} />
-      <ListWrapper>{booksList}</ListWrapper>
+      <ListWrapper className="row">{booksList}</ListWrapper>
     </div>
   );
 };
