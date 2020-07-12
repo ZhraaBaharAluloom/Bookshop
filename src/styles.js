@@ -11,11 +11,12 @@ export const ThemeButton = styled.button`
 
 export const Title = styled.h1`
   text-align: center;
+  color: ${(props) => props.theme.brown};
 `;
 
 export const HomeImage = styled.img`
-  width: 500px;
-  height: 330px;
+  width: 600px;
+  height: 400px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -25,6 +26,7 @@ export const HomeImage = styled.img`
 
 export const Description = styled.h3`
   text-align: center;
+  color: ${(props) => props.theme.brown};
 `;
 
 export const ListWrapper = styled.div`
@@ -34,25 +36,33 @@ export const ListWrapper = styled.div`
 `;
 
 export const BookWrapper = styled.div`
-  padding: 20px;
+  padding: 10px;
+  border: 3px solid ${(props) => props.theme.lightGrey};
+  border-radius: 5px;
+  margin: 5px;
   img {
-    width: 300px;
-    height: 400px;
-    border: 2px solid ${(props) => props.theme.mainColor};
+    width: 200px;
+    height: 300px;
+    display: plex;
     margin: auto;
   }
   p {
     text-align: center;
     font-size: 25px;
     &.colors {
-      color: ${(props) => props.theme.lightGrey};
+      color: ${(props) => props.theme.mainColor};
     }
   }
 `;
 
 export const GlobalStyle = createGlobalStyle`
 body{
-background-color: ${(props) => props.theme.backgroundColor};
+  margin: 0;
+  background: linear-gradient(rgba(234, 224, 213, 0.4), rgba(94, 80, 63, 0.7));
+  height: auto;
+  background-attachment: fixed;
+
+    // background-color: ${(props) => props.theme.backgroundColor};
 color: ${(props) => props.theme.mainColor};
 }
 `;
@@ -102,4 +112,12 @@ export const SearchBarStyled = styled.input`
   margin: 1rem auto;
   display: block;
   width: 40%;
+`;
+
+export const NavLogo = styled.img`
+  width: 100px;
+  height: 50px;
+  &.pic {
+    width: 200px;
+  }
 `;

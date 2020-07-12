@@ -1,12 +1,12 @@
 import React from "react";
-import { ThemeButton, NavItem } from "../styles";
+import { ThemeButton, NavItem, NavLogo } from "../styles";
 import { Link, NavLink } from "react-router-dom";
 
 const NavBar = ({ logo, currentTheme, toggleTheme }) => {
   return (
     <nav className="navbar navbar-expand-lg ">
       <Link to="/" className="navbar-brand">
-        <img src={logo} width="50" />
+        <NavLogo className="pic" src={logo} width="50" />
       </Link>
 
       <button
@@ -27,8 +27,7 @@ const NavBar = ({ logo, currentTheme, toggleTheme }) => {
           to="/books"
           style={{ margin: 10, float: "right" }}
         >
-          {" "}
-          Books{" "}
+          <NavLogo src="https://images.squarespace-cdn.com/content/v1/5569ead6e4b0abcb10515865/1502336619233-1CPGYDJ4MNNJPJ34OOHF/ke17ZwdGBToddI8pDm48kGfiFqkITS6axXxhYYUCnlRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxQ1ibo-zdhORxWnJtmNCajDe36aQmu-4Z4SFOss0oowgxUaachD66r8Ra2gwuBSqM/textbook+icon.png?format=1500w" />
         </NavItem>
         <ul className="navbar-nav ml-auto">
           <ThemeButton className="nav-item active" onClick={toggleTheme}>

@@ -7,7 +7,7 @@ import books from "./books";
 import HomePage from "./Components/Home";
 import { Switch, Route } from "react-router";
 import NavBar from "./Components/NavBar";
-import logo from "./logo1.jpg";
+import logo from "./logo4.webp";
 
 const theme = {
   light: {
@@ -15,6 +15,7 @@ const theme = {
     backgroundColor: "#f7f7ee",
     lightGrey: " #979797",
     red: "#ff3232",
+    brown: "#463f3a",
   },
   dark: {
     mainColor: "#faeee7",
@@ -33,6 +34,9 @@ const theme = {
 function App() {
   let [currentTheme, setCurrentTheme] = useState("light");
   const [_books, setBooks] = useState(books);
+  const createBook = (newBook) => {
+    setBooks([..._books, newBook]);
+  };
 
   const deleteBook = (bookId) => {
     const updatedBooks = _books.filter((book) => book.id !== +bookId);
@@ -58,7 +62,11 @@ function App() {
           <BookDetail books={_books} deleteBook={deleteBook} />
         </Route>
         <Route path="/books">
-          <BooksList books={_books} deleteBook={deleteBook} />
+          <BooksList
+            books={_books}
+            deleteBook={deleteBook}
+            createBook={createBook}
+          />
         </Route>
         <Route exact path="/">
           <HomePage />
