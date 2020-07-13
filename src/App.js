@@ -3,7 +3,6 @@ import BooksList from "./Components/BooksList";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./styles";
 import BookDetail from "./Components/BookDetail";
-import books from "./books";
 import HomePage from "./Components/Home";
 import { Switch, Route } from "react-router";
 import NavBar from "./Components/NavBar";
@@ -26,22 +25,13 @@ const theme = {
 };
 // const [counter, setCounter] = useState(0);
 // const handleIncrement = () => setCounter(counter + 1);
-{
-  /* <button onClick={handleIncrement}>Increment</button>
-{counter} */
-}
+// {
+//   /* <button onClick={handleIncrement}>Increment</button>
+// {counter} */
+// }
 
 function App() {
   let [currentTheme, setCurrentTheme] = useState("light");
-  const [_books, setBooks] = useState(books);
-  const createBook = (newBook) => {
-    setBooks([..._books, newBook]);
-  };
-
-  const deleteBook = (bookId) => {
-    const updatedBooks = _books.filter((book) => book.id !== +bookId);
-    setBooks(updatedBooks);
-  };
 
   const toggleTheme = () => {
     setCurrentTheme(currentTheme === "light" ? "dark" : "light");
@@ -58,15 +48,11 @@ function App() {
       />
 
       <Switch>
-        <Route path="/books/:bookId">
-          <BookDetail books={_books} deleteBook={deleteBook} />
+        <Route path="/books/:bookSlug">
+          <BookDetail />
         </Route>
         <Route path="/books">
-          <BooksList
-            books={_books}
-            deleteBook={deleteBook}
-            createBook={createBook}
-          />
+          <BooksList />
         </Route>
         <Route exact path="/">
           <HomePage />

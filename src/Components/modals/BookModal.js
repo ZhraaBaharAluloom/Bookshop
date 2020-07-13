@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+import bookStore from "../../stores/bookStore";
 
-const BookModal = ({ isOpen, closeModal, createBook }) => {
+const BookModal = ({ isOpen, closeModal }) => {
   const [book, setBook] = useState({
     name: "",
     price: 2,
@@ -14,7 +15,7 @@ const BookModal = ({ isOpen, closeModal, createBook }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createBook(book);
+    bookStore.createBook(book);
     closeModal();
   };
 
@@ -22,7 +23,7 @@ const BookModal = ({ isOpen, closeModal, createBook }) => {
     <div>
       <Modal isOpen={isOpen} onRequestClose={closeModal}>
         <h1>New Book</h1>
-        <div classNameName="container">
+        <div className="container">
           <form onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group col-6">

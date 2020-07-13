@@ -9,7 +9,7 @@ const AddButton = ({ createBook }) => {
   const openModal = () => setIsOpen(true);
   return (
     <div>
-      <TiPlus className="float-right" size="20" onClick={setIsOpen} />
+      <TiPlus className="float-right" size="20" onClick={openModal} />
       <BookModal
         isOpen={isOpen}
         closeModal={closeModal}
