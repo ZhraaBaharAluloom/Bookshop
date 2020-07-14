@@ -33,6 +33,7 @@ export const ListWrapper = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
+  flex-wrap: wrap;
 `;
 
 export const BookWrapper = styled.div`
@@ -40,12 +41,16 @@ export const BookWrapper = styled.div`
   border: 3px solid ${(props) => props.theme.lightGrey};
   border-radius: 5px;
   margin: 5px;
+  width: 300px;
+
   img {
-    width: 200px;
+    width: 250px;
     height: 300px;
-    display: plex;
+    padding: 5px;
     margin: auto;
+    display: flex;
   }
+
   p {
     text-align: center;
     font-size: 25px;
@@ -68,7 +73,11 @@ color: ${(props) => props.theme.mainColor};
 `;
 
 export const DeleteButtonStyled = styled.p`
-  color: #ff3232;
+  color: ${(props) => props.theme.red};
+`;
+
+export const UpdateButtonStyle = styled.p`
+  color: ${(props) => props.theme.grey};
 `;
 
 export const DetailWrapper = styled.div`
@@ -76,7 +85,7 @@ export const DetailWrapper = styled.div`
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 400px;
+  width: 500px;
   h1 {
     text-align: center;
   }

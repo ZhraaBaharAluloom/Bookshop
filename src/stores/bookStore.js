@@ -10,6 +10,12 @@ class BookStore {
     this.books.push(newBook);
   };
 
+  updateBook = (updatedBook) => {
+    const book = this.books.find((book) => book.id === updatedBook.id);
+    for (const key in book) book[key] = updatedBook[key];
+    console.log("updateBook -> book", book);
+  };
+
   deleteBook = (bookId) => {
     this.books = this.books.filter((book) => book.id !== +bookId);
   };

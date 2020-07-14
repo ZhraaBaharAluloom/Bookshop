@@ -12,8 +12,9 @@ const theme = {
   light: {
     mainColor: "#363636",
     backgroundColor: "#f7f7ee",
-    lightGrey: " #979797",
-    red: "#ff3232",
+    lightGrey: " #6d6875",
+    grey: "#424b54",
+    red: "#6a040f",
     brown: "#463f3a",
   },
   dark: {

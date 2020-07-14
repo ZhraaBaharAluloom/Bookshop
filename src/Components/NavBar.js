@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+//style
 import { ThemeButton, NavItem, NavLogo } from "../styles";
-import { Link, NavLink } from "react-router-dom";
 
 const NavBar = ({ logo, currentTheme, toggleTheme }) => {
   return (

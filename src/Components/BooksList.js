@@ -1,21 +1,31 @@
 import React, { useState } from "react";
-import { ListWrapper } from "../styles";
-import BookItem from "./BookItem";
-import SearchBar from "./SearchBar";
-import AddButton from "./Buttons/AddButton";
-import bookStore from "../stores/bookStore";
 import { observer } from "mobx-react";
 
-const BooksList = ({ deleteBook }) => {
+//style
+import { ListWrapper } from "../styles";
+
+//book item
+import BookItem from "./BookItem";
+
+//search bar
+import SearchBar from "./SearchBar";
+
+//buttons
+import AddButton from "./Buttons/AddButton";
+
+//stores
+import bookStore from "../stores/bookStore";
+
+const BooksList = () => {
   const [query, setQuery] = useState("");
   const booksList = bookStore.books
     .filter((book) => book.name.toLowerCase().includes(query.toLowerCase()))
     .map((book) => <BookItem book={book} key={book.id} />);
 
   return (
-    <div className="container">
+    <div>
       <SearchBar setQuery={setQuery} />
-      <ListWrapper className="row">
+      <ListWrapper>
         {booksList}
         <AddButton />
       </ListWrapper>

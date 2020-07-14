@@ -2,20 +2,30 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import bookStore from "../../stores/bookStore";
 
-const BookModal = ({ isOpen, closeModal }) => {
-  const [book, setBook] = useState({
-    name: "",
-    price: 2,
-    description: "",
-    image: "",
-  });
+const BookModal = ({ isOpen, closeModal, oldBook }) => {
+  const [book, setBook] = useState(
+    oldBook ?? {
+      name: "",
+      price: 2,
+      description: "",
+      image: "",
+    }
+  );
+
+  // ({
+  //   name: "",
+  //   price: 2,
+  //   description: "",
+  //   image: "",
+  // });
+
   const handleChange = (event) => {
     setBook({ ...book, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    bookStore.createBook(book);
+    bookStore[oldBook ? "updateBook" : "createBook"](book);
     closeModal();
   };
 
@@ -29,8 +39,10 @@ const BookModal = ({ isOpen, closeModal }) => {
               <div className="form-group col-6">
                 <label>Name</label>
                 <input
+                  required
                   onChange={handleChange}
                   name="name"
+                  value={book.name}
                   type="text"
                   className="form-control"
                 />
@@ -40,6 +52,7 @@ const BookModal = ({ isOpen, closeModal }) => {
                 <input
                   onChange={handleChange}
                   name="price"
+                  value={book.price}
                   type="number"
                   min="2"
                   className="form-control"
@@ -51,6 +64,7 @@ const BookModal = ({ isOpen, closeModal }) => {
               <input
                 onChange={handleChange}
                 name="description"
+                value={book.description}
                 type="text"
                 className="form-control"
                 placeholder="Descibe Your Book"
@@ -59,14 +73,16 @@ const BookModal = ({ isOpen, closeModal }) => {
             <div className="form-group ">
               <label>Image</label>
               <input
+                required
                 onChange={handleChange}
                 name="image"
+                value={book.image}
                 type="text"
                 className="form-control"
               />
             </div>
             <button type="submit" className="btn btn-primary">
-              Create
+              {oldBook ? "Update" : "Create"}
             </button>
           </form>
         </div>

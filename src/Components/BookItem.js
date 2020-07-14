@@ -1,7 +1,14 @@
 import React from "react";
-import { BookWrapper } from "../styles";
-import DeleteButton from "./Buttons/DeleteButton";
 import { Link } from "react-router-dom";
+
+import { observer } from "mobx-react";
+
+//style
+import { BookWrapper } from "../styles";
+
+//buttons
+import DeleteButton from "./Buttons/DeleteButton";
+import UpdateButton from "./Buttons/UpdateButton";
 
 const BookItem = ({ book }) => {
   return (
@@ -11,8 +18,9 @@ const BookItem = ({ book }) => {
       </Link>
       <p>{book.name}</p>
       <p className="colors">{book.price} $</p>
+      <UpdateButton book={book} />
       <DeleteButton bookId={book.id} />
     </BookWrapper>
   );
 };
-export default BookItem;
+export default observer(BookItem);

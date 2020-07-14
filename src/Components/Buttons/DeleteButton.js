@@ -1,5 +1,9 @@
 import React from "react";
+
+//style
 import { DeleteButtonStyled } from "../../styles";
+
+//stores
 import bookStore from "../../stores/bookStore";
 
 const DeleteButton = (props) => {
