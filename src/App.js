@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+import { Switch, Route } from "react-router";
+import logo from "./logo4.webp";
+
+//Components
 import BooksList from "./Components/BooksList";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyle } from "./styles";
 import BookDetail from "./Components/BookDetail";
 import HomePage from "./Components/Home";
-import { Switch, Route } from "react-router";
 import NavBar from "./Components/NavBar";
-import logo from "./logo4.webp";
+
+//styles
+import { GlobalStyle } from "./styles";
 
 const theme = {
   light: {
@@ -24,18 +28,15 @@ const theme = {
     red: "#ff3232",
   },
 };
-// const [counter, setCounter] = useState(0);
-// const handleIncrement = () => setCounter(counter + 1);
-// {
-//   /* <button onClick={handleIncrement}>Increment</button>
-// {counter} */
-// }
 
 function App() {
-  let [currentTheme, setCurrentTheme] = useState("light");
+  const savedTheme = localStorage.getItem("theme") ?? "light";
+  const [currentTheme, setCurrentTheme] = useState(savedTheme);
 
   const toggleTheme = () => {
-    setCurrentTheme(currentTheme === "light" ? "dark" : "light");
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+    setCurrentTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
 
   return (

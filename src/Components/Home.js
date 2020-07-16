@@ -1,4 +1,6 @@
 import React from "react";
+
+//styles
 import { HomeImage, Description, Title } from "../styles";
 
 const HomePage = () => {

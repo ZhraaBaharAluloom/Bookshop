@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import { observer } from "mobx-react";
 
 //style
@@ -23,4 +22,5 @@ const BookItem = ({ book }) => {
     </BookWrapper>
   );
 };
+
 export default observer(BookItem);

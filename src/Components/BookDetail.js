@@ -17,6 +17,7 @@ const BookDetail = () => {
   const { bookSlug } = useParams();
   const book = bookStore.books.find((book) => book.slug === bookSlug);
   if (!book) return <Redirect to="/books" />;
+
   return (
     <DetailWrapper>
       <h1>{book.name}</h1>

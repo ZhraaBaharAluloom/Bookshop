@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+
+//stores
 import bookStore from "../../stores/bookStore";
 
 const BookModal = ({ isOpen, closeModal, oldBook }) => {
@@ -11,13 +13,6 @@ const BookModal = ({ isOpen, closeModal, oldBook }) => {
       image: "",
     }
   );
-
-  // ({
-  //   name: "",
-  //   price: 2,
-  //   description: "",
-  //   image: "",
-  // });
 
   const handleChange = (event) => {
     setBook({ ...book, [event.target.name]: event.target.value });
