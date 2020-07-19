@@ -1,12 +1,20 @@
-import books from "../books";
 import { decorate, observable } from "mobx";
 import slugify from "react-slugify";
+import axios from "axios";
 
 class BookStore {
-  books = books;
+  books = [];
+
+  fetchBooks = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/books");
+      this.books = response.data;
+    } catch (error) {}
+  };
+
   createBook = (newBook) => {
-    newBook.id = this.books[books.length - 1].id + 1;
-    newBook.slug = slugify(newBook.name);
+    // newBook.id = this.books[books.length - 1].id + 1;
+    // newBook.slug = slugify(newBook.name);
     this.books.push(newBook);
   };
 
@@ -25,5 +33,6 @@ decorate(BookStore, {
 });
 
 const bookStore = new BookStore();
+bookStore.fetchBooks();
 
 export default bookStore;
