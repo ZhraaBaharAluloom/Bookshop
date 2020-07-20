@@ -1,5 +1,4 @@
 import { decorate, observable } from "mobx";
-import slugify from "react-slugify";
 import axios from "axios";
 
 class BookStore {
@@ -14,10 +13,13 @@ class BookStore {
     }
   };
 
-  createBook = (newBook) => {
-    // newBook.id = this.books[books.length - 1].id + 1;
-    // newBook.slug = slugify(newBook.name);
-    this.books.push(newBook);
+  createBook = async (newBook) => {
+    try {
+      const res = await axios.post("http://localhost:8000/books", newBook);
+      this.books.push(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   updateBook = (updatedBook) => {

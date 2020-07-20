@@ -53,6 +53,30 @@ const BookModal = ({ isOpen, closeModal, oldBook }) => {
                   className="form-control"
                 />
               </div>
+
+              <div className="form-group col-6">
+                <label>Author</label>
+                <input
+                  required
+                  onChange={handleChange}
+                  name="author"
+                  value={book.author}
+                  type="text"
+                  className="form-control"
+                />
+              </div>
+
+              <div className="form-group col-6">
+                <label>Genre</label>
+                <input
+                  required
+                  onChange={handleChange}
+                  name="genre"
+                  value={book.genre}
+                  type="text"
+                  className="form-control"
+                />
+              </div>
             </div>
             <div className="form-group ">
               <label for="inputAddress">Description</label>
@@ -76,6 +100,33 @@ const BookModal = ({ isOpen, closeModal, oldBook }) => {
                 className="form-control"
               />
             </div>
+            <div className="form-row">
+              <div className="form-group col-6">
+                <label>Released</label>
+                <input
+                  required
+                  onChange={handleChange}
+                  name="released"
+                  value={book.released}
+                  type="text"
+                  className="form-control"
+                />
+              </div>
+
+              <div className="form-group col-6">
+                <label>Delivery</label>
+                <input
+                  required
+                  onChange={handleChange}
+                  name="delivery"
+                  value={book.delivery}
+                  placeholder="Available/ NOT  Available"
+                  type="text"
+                  className="form-control"
+                />
+              </div>
+            </div>
+
             <button type="submit" className="btn btn-primary">
               {oldBook ? "Update" : "Create"}
             </button>
