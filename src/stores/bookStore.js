@@ -9,7 +9,9 @@ class BookStore {
     try {
       const response = await axios.get("http://localhost:8000/books");
       this.books = response.data;
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   createBook = (newBook) => {
@@ -23,8 +25,13 @@ class BookStore {
     for (const key in book) book[key] = updatedBook[key];
   };
 
-  deleteBook = (bookId) => {
-    this.books = this.books.filter((book) => book.id !== +bookId);
+  deleteBook = async (bookId) => {
+    try {
+      await axios.delete(`http://localhost:8000/books/${bookId}`);
+      this.books = this.books.filter((book) => book.id !== +bookId);
+    } catch (error) {
+      console.error(error);
+    }
   };
 }
 
