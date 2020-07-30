@@ -10,26 +10,17 @@ import BookItem from "./BookItem";
 //search bar
 import SearchBar from "./SearchBar";
 
-//buttons
-import AddButton from "./Buttons/AddButton";
-
-//stores
-import bookStore from "../stores/bookStore";
-
-const BooksList = () => {
+const BookList = ({ books }) => {
   const [query, setQuery] = useState("");
-  const booksList = bookStore.books
+  const booksList = books
     .filter((book) => book.name.toLowerCase().includes(query.toLowerCase()))
     .map((book) => <BookItem book={book} key={book.id} />);
 
   return (
     <div>
       <SearchBar setQuery={setQuery} />
-      <ListWrapper>
-        {booksList}
-        <AddButton />
-      </ListWrapper>
+      <ListWrapper>{booksList}</ListWrapper>
     </div>
   );
 };
-export default observer(BooksList);
+export default observer(BookList);

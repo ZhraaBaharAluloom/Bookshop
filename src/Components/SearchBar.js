@@ -3,11 +3,11 @@ import React from "react";
 //styles
 import { SearchBarStyled } from "../styles";
 
-const SearchBar = (props) => {
+const SearchBar = ({ setQuery }) => {
   return (
     <SearchBarStyled
-      placeholder="Search for book name"
-      onChange={(event) => props.setQuery(event.target.value)}
+      placeholder="Search.."
+      onChange={(event) => setQuery(event.target.value)}
     />
   );
 };

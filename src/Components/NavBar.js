@@ -31,6 +31,13 @@ const NavBar = ({ logo, currentTheme, toggleTheme }) => {
         >
           <NavLogo src="https://images.squarespace-cdn.com/content/v1/5569ead6e4b0abcb10515865/1502336619233-1CPGYDJ4MNNJPJ34OOHF/ke17ZwdGBToddI8pDm48kGfiFqkITS6axXxhYYUCnlRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpxQ1ibo-zdhORxWnJtmNCajDe36aQmu-4Z4SFOss0oowgxUaachD66r8Ra2gwuBSqM/textbook+icon.png?format=1500w" />
         </NavItem>
+        <NavItem
+          className="nav-item"
+          to="/vendors"
+          style={{ margin: 10, float: "right" }}
+        >
+          SHOPS
+        </NavItem>
         <ul className="navbar-nav ml-auto">
           <ThemeButton className="nav-item active" onClick={toggleTheme}>
             {currentTheme === "light" ? "Dark Mode" : "Light Mode"}

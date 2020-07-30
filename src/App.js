@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Switch, Route } from "react-router";
+import { observer } from "mobx-react";
 import logo from "./logo4.webp";
 
 //Components
-import BooksList from "./Components/BooksList";
 import { ThemeProvider } from "styled-components";
-import BookDetail from "./Components/BookDetail";
-import HomePage from "./Components/Home";
 import NavBar from "./Components/NavBar";
+import Routes from "./Components/Routes";
+
+//Stores
+import vendorStore from "./stores/vendorStore";
+import bookStore from "./stores/bookStore";
 
 //styles
 import { GlobalStyle } from "./styles";
@@ -42,26 +44,18 @@ function App() {
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
-
       <NavBar
         currentTheme={currentTheme}
         toggleTheme={toggleTheme}
         logo={logo}
       />
-
-      <Switch>
-        <Route path="/books/:bookSlug">
-          <BookDetail />
-        </Route>
-        <Route path="/books">
-          <BooksList />
-        </Route>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-      </Switch>
+      {vendorStore.loading || bookStore.loading ? (
+        <h1>Loadinggg</h1>
+      ) : (
+        <Routes />
+      )}{" "}
     </ThemeProvider>
   );
 }
 
-export default App;
+export default observer(App);

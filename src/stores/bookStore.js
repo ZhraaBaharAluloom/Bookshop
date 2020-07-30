@@ -14,8 +14,14 @@ class BookStore {
   };
 
   createBook = async (newBook) => {
+    console.log("BookStore -> createBook -> newBook", newBook);
     try {
-      const res = await axios.post("http://localhost:8000/books", newBook);
+      const formData = new FormData();
+      for (const key in newBook) formData.append(key, newBook[key]);
+      const res = await axios.post(
+        `http://localhost:8000/vendors/${newBook.vendorId}/books`,
+        formData
+      );
       this.books.push(res.data);
     } catch (error) {
       console.log(error);
@@ -24,9 +30,11 @@ class BookStore {
 
   updateBook = async (updatedBook) => {
     try {
+      const formData = new FormData();
+      for (const key in updatedBook) formData.append(key, updatedBook[key]);
       await axios.put(
         `http://localhost:8000/books/${updatedBook.id}`,
-        updatedBook
+        formData
       );
     } catch (error) {
       console.log(error);

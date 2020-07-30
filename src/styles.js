@@ -1,6 +1,8 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { NavLink } from "react-router-dom";
 
+// Books Style
+
 export const ThemeButton = styled.button`
   font-size: 1em;
   padding: 0.25em 1em;
@@ -66,9 +68,9 @@ body{
   background: linear-gradient(rgba(234, 224, 213, 0.4), rgba(94, 80, 63, 0.7));
   height: auto;
   background-attachment: fixed;
-
-    // background-color: ${(props) => props.theme.backgroundColor};
-color: ${(props) => props.theme.mainColor};
+  
+  // background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.mainColor};
 }
 `;
 
@@ -120,7 +122,7 @@ export const SearchBarStyled = styled.input`
   padding: 0.5rem;
   margin: 1rem auto;
   display: block;
-  width: 40%;
+  width: 350px;
 `;
 
 export const NavLogo = styled.img`
@@ -128,5 +130,49 @@ export const NavLogo = styled.img`
   height: 50px;
   &.pic {
     width: 200px;
+  }
+`;
+
+//Vendor Style
+export const VendorWrapper = styled.div`
+  border: 3px solid ${(props) => props.theme.lightGrey};
+  border-radius: 5px;
+  margin: 5px;
+  width: 500;
+
+  img {
+    width: 400px;
+    height: 300px;
+    margin: auto;
+    display: flex;
+  }
+
+  p {
+    text-align: center;
+    font-size: 25px;
+
+    &.colors {
+      color: ${(props) => props.theme.mainColor};
+    }
+  }
+`;
+
+export const VendorDetailWrapper = styled.div`
+  border: ;
+  display: block;
+  margin: 50px auto 30px;
+  width: 500px;
+
+  img {
+    width: 500px;
+    height: 300px;
+    display: block;
+    margin: auto;
+  }
+
+  p {
+    vertical-align: middle;
+    text-align: center;
+    margin: 10px;
   }
 `;

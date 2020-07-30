@@ -4,9 +4,10 @@ import Modal from "react-modal";
 //stores
 import bookStore from "../../stores/bookStore";
 
-const BookModal = ({ isOpen, closeModal, oldBook }) => {
+const BookModal = ({ vendorId, isOpen, closeModal, oldBook }) => {
   const [book, setBook] = useState(
     oldBook ?? {
+      vendorId,
       name: "",
       price: 2,
       description: "",
@@ -17,6 +18,9 @@ const BookModal = ({ isOpen, closeModal, oldBook }) => {
   const handleChange = (event) => {
     setBook({ ...book, [event.target.name]: event.target.value });
   };
+
+  const handleImage = (event) =>
+    setBook({ ...book, image: event.target.files[0] });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -93,10 +97,9 @@ const BookModal = ({ isOpen, closeModal, oldBook }) => {
               <label>Image</label>
               <input
                 required
-                onChange={handleChange}
+                onChange={handleImage}
                 name="image"
-                value={book.image}
-                type="text"
+                type="file"
                 className="form-control"
               />
             </div>
