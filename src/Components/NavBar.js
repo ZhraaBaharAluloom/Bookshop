@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 //style
 import { ThemeButton, NavItem, NavLogo } from "../styles";
+import SignupButton from "./Buttons/SignupButton";
+import SigninButton from "./Buttons/SigninButton";
 
 const NavBar = ({ logo, currentTheme, toggleTheme }) => {
   return (
@@ -39,9 +41,15 @@ const NavBar = ({ logo, currentTheme, toggleTheme }) => {
           SHOPS
         </NavItem>
         <ul className="navbar-nav ml-auto">
-          <ThemeButton className="nav-item active" onClick={toggleTheme}>
+          <div className="nav-item active" >
+           <SigninButton/>
+          </div>
+          <div className="nav-item active" >
+           <SignupButton/>
+          </div>
+          {/* <ThemeButton className="nav-item active" onClick={toggleTheme}>
             {currentTheme === "light" ? "Dark Mode" : "Light Mode"}
-          </ThemeButton>
+          </ThemeButton> */}
         </ul>
       </div>
     </nav>
