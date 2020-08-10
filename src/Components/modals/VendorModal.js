@@ -4,32 +4,48 @@ import Modal from "react-modal";
 //stores
 import vendorStore from "../../stores/vendorStore";
 
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+
+  },
+};
+
+
+
 const VendorModal = ({ isOpen, closeModal, oldVendor }) => {
   const [vendor, setVendor] = useState(
     oldVendor ?? {
       name: "",
       image: "",
     }
-  );
-
-  const handleChange = (event) => {
-    setVendor({ ...vendor, [event.target.name]: event.target.value });
-  };
-
-  const handleImage = (event) =>
+    );
+    
+    const handleChange = (event) => {
+      setVendor({ ...vendor, [event.target.name]: event.target.value });
+    };
+    
+    const handleImage = (event) =>
     setVendor({ ...vendor, image: event.target.files[0] });
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    vendorStore[oldVendor ? "updateVendor" : "createVendor"](vendor);
-    closeModal();
-  };
-
-  return (
-    <div>
-      <Modal isOpen={isOpen} onRequestClose={closeModal}>
-        <h1>New Shop</h1>
-        <div className="container">
+    
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      vendorStore[oldVendor ? "updateVendor" : "createVendor"](vendor);
+      closeModal();
+    };
+    
+    return (
+      <div>
+      <Modal isOpen={isOpen} onRequestClose={closeModal}
+      style={customStyles}
+>
+              <h1>New Shop</h1>
+        <div>
           <form onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group col-6">
@@ -48,7 +64,6 @@ const VendorModal = ({ isOpen, closeModal, oldVendor }) => {
             <div className="form-group ">
               <label>Image</label>
               <input
-                required
                 onChange={handleImage}
                 name="image"
                 type="file"

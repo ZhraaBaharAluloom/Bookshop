@@ -4,35 +4,51 @@ import Modal from "react-modal";
 //stores
 import bookStore from "../../stores/bookStore";
 
-const BookModal = ({ vendorId, isOpen, closeModal, oldBook }) => {
+// Styles
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+
+
+
+const BookModal = ({ vendor, isOpen, closeModal, oldBook }) => {
   const [book, setBook] = useState(
     oldBook ?? {
-      vendorId,
+      
       name: "",
       price: 2,
       description: "",
       image: "",
     }
-  );
-
-  const handleChange = (event) => {
-    setBook({ ...book, [event.target.name]: event.target.value });
-  };
-
-  const handleImage = (event) =>
+    );
+    
+    const handleChange = (event) => {
+      setBook({ ...book, [event.target.name]: event.target.value });
+    };
+    
+    const handleImage = (event) =>
     setBook({ ...book, image: event.target.files[0] });
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    bookStore[oldBook ? "updateBook" : "createBook"](book);
-    closeModal();
-  };
-
-  return (
-    <div>
-      <Modal isOpen={isOpen} onRequestClose={closeModal}>
-        <h1>New Book</h1>
-        <div className="container">
+    
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      bookStore[oldBook ? "updateBook" : "createBook"](book, vendor);
+      closeModal();
+    };
+    
+    return (
+      <div>
+      <Modal isOpen={isOpen} onRequestClose={closeModal}
+      style={customStyles}
+>
+              <h1>New Book</h1>
+        <div >
           <form onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group col-6">
@@ -49,6 +65,7 @@ const BookModal = ({ vendorId, isOpen, closeModal, oldBook }) => {
               <div className="form-group col-6">
                 <label>Price</label>
                 <input
+                required
                   onChange={handleChange}
                   name="price"
                   value={book.price}
@@ -73,7 +90,6 @@ const BookModal = ({ vendorId, isOpen, closeModal, oldBook }) => {
               <div className="form-group col-6">
                 <label>Genre</label>
                 <input
-                  required
                   onChange={handleChange}
                   name="genre"
                   value={book.genre}
@@ -107,7 +123,6 @@ const BookModal = ({ vendorId, isOpen, closeModal, oldBook }) => {
               <div className="form-group col-6">
                 <label>Released</label>
                 <input
-                  required
                   onChange={handleChange}
                   name="released"
                   value={book.released}
@@ -116,18 +131,6 @@ const BookModal = ({ vendorId, isOpen, closeModal, oldBook }) => {
                 />
               </div>
 
-              <div className="form-group col-6">
-                <label>Delivery</label>
-                <input
-                  required
-                  onChange={handleChange}
-                  name="delivery"
-                  value={book.delivery}
-                  placeholder="Available/ NOT  Available"
-                  type="text"
-                  className="form-control"
-                />
-              </div>
             </div>
 
             <button type="submit" className="btn btn-primary">

@@ -10,7 +10,7 @@ import BookItem from "./BookItem";
 //search bar
 import SearchBar from "./SearchBar";
 
-const BookList = ({ books }) => {
+const BookList = ({ books}) => {
   const [query, setQuery] = useState("");
   const booksList = books
     .filter((book) => book.name.toLowerCase().includes(query.toLowerCase()))

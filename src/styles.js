@@ -11,25 +11,19 @@ export const ThemeButton = styled.button`
   color: ${(props) => props.theme.backgroundColor};
 `;
 
-export const Title = styled.h1`
+export const HomeTitle = styled.h1`
+margin-top: 300px;
   text-align: center;
   color: ${(props) => props.theme.brown};
 `;
 
-export const HomeImage = styled.img`
-  width: 600px;
-  height: 400px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  border: 2px solid ${(props) => props.theme.mainColor};
-  border-radius: 3px;
-`;
-
-export const Description = styled.h3`
+export const HomeDescription = styled.h3`
   text-align: center;
   color: ${(props) => props.theme.brown};
 `;
+
+
+
 
 export const ListWrapper = styled.div`
   align-items: center;
@@ -134,6 +128,23 @@ export const NavLogo = styled.img`
 `;
 
 //Vendor Style
+
+export const Title = styled.h1`
+  text-align: center;
+  padding: 20px;
+  color: ${(props) => props.theme.brown};
+`;
+
+export const SignupStyle = styled.button`
+  font-size: 1em;
+  padding: 0.25em 1em;
+  border-radius: 3px;
+  background-color: ${(props) => props.theme.mainColor};
+  color: ${(props) => props.theme.backgroundColor};
+`;
+
+
+
 export const VendorWrapper = styled.div`
   border: 3px solid ${(props) => props.theme.lightGrey};
   border-radius: 5px;
