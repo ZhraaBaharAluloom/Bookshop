@@ -20,6 +20,7 @@ const SigninModal = ({isOpen, closeModal}) => {
     const [user, setUser] = useState({
         username: "",
         password:"",
+        role:"vendor",
         
     })
 

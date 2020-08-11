@@ -1,6 +1,13 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { NavLink } from "react-router-dom";
 
+
+
+export const UsernameStyled = styled.p`
+  padding: 0.25em 1em;
+  font-size: 20px;
+  `;
+
 // Books Style
 
 export const ThemeButton = styled.button`

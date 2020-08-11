@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { observer } from "mobx-react";
+import authStore from "../stores/authStore";
 
 //style
-import { ThemeButton, NavItem, NavLogo } from "../styles";
+import { ThemeButton, NavItem, NavLogo, UsernameStyled } from "../styles";
 import SignupButton from "./Buttons/SignupButton";
 import SigninButton from "./Buttons/SigninButton";
 
@@ -13,20 +15,10 @@ const NavBar = ({ logo, currentTheme, toggleTheme }) => {
         <NavLogo className="pic" src={logo} width="50" />
       </Link>
 
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <NavItem
+      {authStore.user && authStore.user.role === "admin" &&  (
+      <>
+      <NavItem 
           className="nav-item"
           to="/books"
           style={{ margin: 10, float: "right" }}
@@ -40,20 +32,33 @@ const NavBar = ({ logo, currentTheme, toggleTheme }) => {
         >
           SHOPS
         </NavItem>
+        </>)}
+
+       
+
+        {
+        authStore.user ? (   <ul className="navbar-nav ml-auto">
+        <div className="nav-item active" >
+        <UsernameStyled>Hello, {authStore.user.username}</UsernameStyled>
+        </div></ul>
+  ) :(
+        
         <ul className="navbar-nav ml-auto">
           <div className="nav-item active" >
            <SigninButton/>
           </div>
           <div className="nav-item active" >
            <SignupButton/>
-          </div>
+          </div></ul>
+          )}
+        
           {/* <ThemeButton className="nav-item active" onClick={toggleTheme}>
             {currentTheme === "light" ? "Dark Mode" : "Light Mode"}
           </ThemeButton> */}
-        </ul>
+        
       </div>
     </nav>
   );
 };
 
-export default NavBar;
+export default observer(NavBar);

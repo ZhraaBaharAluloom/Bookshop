@@ -1,8 +1,10 @@
 import { decorate, observable } from "mobx";
 import instance from "./instance";
+import decode from "jwt-decode";
+
 
 class AuthStore {
-
+user = null;
 
     signup = async (userData) => {
         try {
@@ -18,8 +20,8 @@ class AuthStore {
     signin = async (userData) => {
         try {
             const res = await instance.post("/signin", userData);
-            console.log("AuthStore -> signin -> res", res.data)
-
+            this.user = decode(res.data.token)
+            console.log("AuthStore -> signin -> this.user ", this.user )
         } catch (error) {
         console.log("AuthStore -> signin -> error", error)
             
@@ -31,7 +33,7 @@ class AuthStore {
 
 
 decorate(AuthStore, {
-
+user: observable,
 });
 
 const authStore = new AuthStore();

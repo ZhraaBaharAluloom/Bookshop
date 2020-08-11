@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { observer } from "mobx-react";
+import BookList from "./BookList";
 
 //buttons
 import DeleteButton from "../Components/Buttons/DeleteButton";
@@ -13,7 +14,8 @@ import { VendorDetailWrapper, Title } from "../styles";
 
 //stores
 import vendorStore from "../stores/vendorStore";
-import BookList from "./BookList";
+import bookStore from "../stores/bookStore";
+
 
 const VendorDetail = () => {
   const { vendorSlug } = useParams();
@@ -22,6 +24,12 @@ const VendorDetail = () => {
     (vendor) => vendor.slug === vendorSlug
   );
   if (!vendor) return <Redirect to="/vendors" />;
+
+  let books = [];
+if (vendor.books) { books = vendor.books
+.map(book => bookStore.getBookById(book.id))
+.filter(book => book)}
+
 
   return (
     <>
@@ -32,8 +40,8 @@ const VendorDetail = () => {
         <DeleteButton vendorId={vendor.id} />
       </VendorDetailWrapper>
       <div className="container">
-        <AddButton vendorId={vendor.id} />
-        <BookList books={vendor.books} />
+        <AddButton vendor={vendor} />
+        <BookList books={books} />
       </div>
     </>
   );

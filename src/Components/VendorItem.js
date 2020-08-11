@@ -5,9 +5,7 @@ import { observer } from "mobx-react";
 //style
 import { VendorWrapper } from "../styles";
 
-//buttons
-import DeleteButton from "./Buttons/DeleteButton";
-import UpdateButton from "./Buttons/UpdateButton";
+
 
 const VendorItem = ({ vendor }) => {
   return (

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
+import authStore from "../stores/authStore";
+import { Redirect } from "react-router";
 
 //style
 import { ListWrapper, Title } from "../styles";
@@ -22,6 +24,8 @@ const VendorList = () => {
   const vendorList = vendorStore.vendors
     .filter((vendor) => vendor.name.toLowerCase().includes(query.toLowerCase()))
     .map((vendor) => <VendorItem vendor={vendor} key={vendor.id} />);
+  if (!authStore.user || authStore.user.role !== "admin")
+    return <Redirect to="/" />;
 
   return (
     <div className="container">

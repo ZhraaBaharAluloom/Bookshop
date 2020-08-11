@@ -9,14 +9,11 @@ import bookStore from "../../stores/bookStore";
 import vendorStore from "../../stores/vendorStore";
 
 const DeleteButton = ({ bookId, vendorId }) => {
-  const history = useHistory();
   const handleDelete = () => {
     if (vendorId) {
       vendorStore.deleteVendor(vendorId);
-      history.push("/vendors");
     } else {
       bookStore.deleteBook(bookId);
-      history.push("/books");
     }
   };
 

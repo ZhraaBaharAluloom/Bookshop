@@ -3,10 +3,8 @@ import { TiPlus } from "react-icons/ti";
 import BookModal from "../modals/BookModal";
 import VendorModal from "../modals/VendorModal";
 
-import Vendors from "../../stores/vendorStore";
-import vendorStore from "../../stores/vendorStore";
 
-const AddButton = ({ vendorId }) => {
+const AddButton = ({ vendor }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => setIsOpen(false);
@@ -14,9 +12,9 @@ const AddButton = ({ vendorId }) => {
   return (
     <div>
       <TiPlus className="float-right" size="20" onClick={openModal} />
-      {vendorId ? (
+      {vendor ? (
         <BookModal
-          vendorId={vendorId}
+          vendor={vendor}
           isOpen={isOpen}
           closeModal={closeModal}
         />
