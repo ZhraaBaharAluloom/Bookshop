@@ -1,10 +1,16 @@
 import React from "react";
+import authStore from "../stores/authStore";
+import { observer } from "mobx-react";
+
+import { Redirect } from "react-router";
 
 //styles
-import {HomeTitle,
-  HomeDescription} from "../styles";
+import { HomeTitle, HomeDescription } from "../styles";
 
 const HomePage = () => {
+  if (!authStore.user || authStore.user.role !== "admin")
+    return <Redirect to="/" />;
+
   return (
     <>
       <HomeTitle>BOOKS & BOOKS</HomeTitle>
@@ -13,4 +19,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default observer(HomePage);
