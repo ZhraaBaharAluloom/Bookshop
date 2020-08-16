@@ -15,22 +15,22 @@ import { VendorDetailWrapper, Title } from "../styles";
 //stores
 import vendorStore from "../stores/vendorStore";
 import bookStore from "../stores/bookStore";
-
+import authStore from "../stores/authStore";
 
 const VendorDetail = () => {
   const { vendorSlug } = useParams();
-
   const vendor = vendorStore.vendors.find(
     (vendor) => vendor.slug === vendorSlug
   );
-  if (!vendor) return <Redirect to="/vendors" />;
 
-  let books = [];
-if (vendor.books) { books = vendor.books
-.map(book => bookStore.getBookById(book.id))
-.filter(book => book)}
+  const books =
+    vendor && vendor.books
+      ? vendor.books
+          .map((book) => bookStore.getBookById(book.id))
+          .filter((book) => book)
+      : [];
 
-
+  if (!authStore.user || !vendor) return <Redirect to="/" />;
   return (
     <>
       <VendorDetailWrapper>

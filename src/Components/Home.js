@@ -8,9 +8,6 @@ import { Redirect } from "react-router";
 import { HomeTitle, HomeDescription } from "../styles";
 
 const HomePage = () => {
-  if (!authStore.user || authStore.user.role !== "admin")
-    return <Redirect to="/" />;
-
   return (
     <>
       <HomeTitle>BOOKS & BOOKS</HomeTitle>

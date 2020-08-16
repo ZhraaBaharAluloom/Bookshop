@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-
-//stores
 import vendorStore from "../../stores/vendorStore";
 
+// Styles
 const customStyles = {
   content: {
     top: "50%",
@@ -15,13 +14,8 @@ const customStyles = {
   },
 };
 
-const VendorModal = ({ isOpen, closeModal, oldVendor }) => {
-  const [vendor, setVendor] = useState(
-    oldVendor ?? {
-      name: "",
-      image: "",
-    }
-  );
+const VendorupdateModal = ({ isOpen, closeModal, oldVendor }) => {
+  const [vendor, setVendor] = useState(oldVendor);
 
   const handleChange = (event) => {
     setVendor({ ...vendor, [event.target.name]: event.target.value });
@@ -32,14 +26,14 @@ const VendorModal = ({ isOpen, closeModal, oldVendor }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    vendorStore[oldVendor ? "updateVendor" : "createVendor"](vendor);
+    vendorStore.updateVendor(vendor);
     closeModal();
   };
 
   return (
     <div>
       <Modal isOpen={isOpen} onRequestClose={closeModal} style={customStyles}>
-        <h1> {oldVendor ? "Update Shop" : "Create New Shop"}</h1>
+        <h1>update vendor</h1>
         <div>
           <form onSubmit={handleSubmit}>
             <div className="form-row">
@@ -67,7 +61,7 @@ const VendorModal = ({ isOpen, closeModal, oldVendor }) => {
             </div>
 
             <button type="submit" className="btn btn-primary">
-              {oldVendor ? "Update" : "Create"}
+              Update
             </button>
           </form>
         </div>
@@ -75,5 +69,4 @@ const VendorModal = ({ isOpen, closeModal, oldVendor }) => {
     </div>
   );
 };
-
-export default VendorModal;
+export default VendorupdateModal;

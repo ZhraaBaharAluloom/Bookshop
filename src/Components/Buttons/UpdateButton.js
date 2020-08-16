@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import BookModal from "../modals/BookModal";
 import { UpdateButtonStyle } from "../../styles";
 import VendorModal from "../modals/VendorModal";
+import VendorupdateModal from "../modals/VendorupdateModal";
 
 const UpdateButton = ({ book, vendor }) => {
   const [isOpen, setIsOpen] = useState(false);

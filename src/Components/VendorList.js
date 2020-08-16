@@ -24,8 +24,8 @@ const VendorList = () => {
   const vendorList = vendorStore.vendors
     .filter((vendor) => vendor.name.toLowerCase().includes(query.toLowerCase()))
     .map((vendor) => <VendorItem vendor={vendor} key={vendor.id} />);
-  if (!authStore.user || authStore.user.role !== "admin")
-    return <Redirect to="/" />;
+  // if (!authStore.user || authStore.user.role !== "admin")
+  //   return <Redirect to="/" />;
 
   return (
     <div className="container">

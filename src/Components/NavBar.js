@@ -1,25 +1,40 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import { observer } from "mobx-react";
+import { Link } from "react-router-dom";
+
+// Store
 import authStore from "../stores/authStore";
+import vendorStore from "../stores/vendorStore";
 
 //style
 import { ThemeButton, NavItem, NavLogo, UsernameStyled } from "../styles";
 import { FiLogOut } from "react-icons/fi";
 
-// Buttons
+// Components
+import VendorModal from "./modals/VendorModal";
 import SignupButton from "./Buttons/SignupButton";
 import SigninButton from "./Buttons/SigninButton";
+import VendorDetail from "./VendorDetail";
 
 const NavBar = ({ logo, currentTheme, toggleTheme }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeModal = () => setIsOpen(false);
+  const openModal = () => setIsOpen(true);
+
+  const vendor = authStore.user
+    ? vendorStore.vendors.find((vendor) => vendor.userId === authStore.user.id)
+    : null;
+
   return (
     <nav className="navbar navbar-expand-lg ">
+      {/* logo */}
       <Link to="/" className="navbar-brand">
         <NavLogo className="pic" src={logo} width="50" />
       </Link>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        {authStore.user && authStore.user.role === "admin" && (
+        {authStore.user?.role === "admin" && (
           <>
             <NavItem
               className="nav-item"
@@ -38,12 +53,19 @@ const NavBar = ({ logo, currentTheme, toggleTheme }) => {
           </>
         )}
 
+        {authStore.user && !vendor && (
+          <UsernameStyled onClick={openModal}>Create Shop</UsernameStyled>
+        )}
+        <VendorModal isOpen={isOpen} closeModal={closeModal} />
         {authStore.user ? (
           <ul className="navbar-nav ml-auto">
             <div className="nav-item active">
               <UsernameStyled>
                 Hello, {authStore.user.username}{" "}
-                <FiLogOut onClick={authStore.signout} color="blue" />
+                {vendor && (
+                  <NavItem to={`/vendors/${vendor.slug}`}>My shop</NavItem>
+                )}
+                <FiLogOut onClick={authStore.signout} color="red" margin="2" />
               </UsernameStyled>
             </div>
           </ul>

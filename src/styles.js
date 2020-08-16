@@ -1,12 +1,10 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { NavLink } from "react-router-dom";
 
-
-
 export const UsernameStyled = styled.p`
-  padding: 0.25em 1em;
+  padding: 0.25em 2em;
   font-size: 20px;
-  `;
+`;
 
 // Books Style
 
@@ -19,7 +17,7 @@ export const ThemeButton = styled.button`
 `;
 
 export const HomeTitle = styled.h1`
-margin-top: 300px;
+  margin-top: 300px;
   text-align: center;
   color: ${(props) => props.theme.brown};
 `;
@@ -28,9 +26,6 @@ export const HomeDescription = styled.h3`
   text-align: center;
   color: ${(props) => props.theme.brown};
 `;
-
-
-
 
 export const ListWrapper = styled.div`
   align-items: center;
@@ -113,6 +108,7 @@ export const DetailWrapper = styled.div`
 export const NavItem = styled(NavLink)`
   color: ${(props) => props.theme.mainColor};
   font-size: 20px;
+  padding: 7px;
 
   &.active {
     color: ${(props) => props.theme.lightGrey};
@@ -149,8 +145,6 @@ export const SignupStyle = styled.button`
   background-color: ${(props) => props.theme.mainColor};
   color: ${(props) => props.theme.backgroundColor};
 `;
-
-
 
 export const VendorWrapper = styled.div`
   border: 3px solid ${(props) => props.theme.lightGrey};
