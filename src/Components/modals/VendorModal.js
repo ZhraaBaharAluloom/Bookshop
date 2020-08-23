@@ -17,10 +17,18 @@ const customStyles = {
 
 const VendorModal = ({ isOpen, closeModal, oldVendor }) => {
   const [vendor, setVendor] = useState(
-    oldVendor ?? {
-      name: "",
-      image: "",
-    }
+    oldVendor
+      ? {
+          name: oldVendor.name,
+          image: oldVendor.image,
+          id: oldVendor.id,
+          userId: oldVendor.userId,
+          slug: oldVendor.slug,
+        }
+      : {
+          name: "",
+          image: "",
+        }
   );
 
   const handleChange = (event) => {

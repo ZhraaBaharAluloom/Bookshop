@@ -34,7 +34,9 @@ class VendorStore {
       // update in the backend
       const formData = new FormData();
       for (const key in updatedVendor) formData.append(key, updatedVendor[key]);
+
       await instance.put(`/vendors/${updatedVendor.id}`, formData);
+
       // update in the frontend
       const vendor = this.vendors.find(
         (vendor) => vendor.id === updatedVendor.id
@@ -42,7 +44,7 @@ class VendorStore {
       for (const key in updatedVendor) vendor[key] = updatedVendor[key];
       vendor.image = URL.createObjectURL(updatedVendor.image);
     } catch (error) {
-      console.log("helooooo", error);
+      console.log(error);
     }
   };
 
